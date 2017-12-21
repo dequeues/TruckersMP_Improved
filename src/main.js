@@ -199,6 +199,16 @@ function saveSettings(storage, data, with_message) {
       }
     }
   });
+
+  var database = firebase.database();
+
+  console.log();
+  database.ref('data/' + firebase.auth().currentUser.uid).set(JSON.stringify(data));
+
+
+  firebase.database().ref('data/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
+    console.log(snapshot.val())
+  })
 }
 
 function val_init() {

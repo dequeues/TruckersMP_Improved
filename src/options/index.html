@@ -8,11 +8,27 @@
   <title>TruckersMP Improved Settings</title>
 
   <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="/src/firebase/credentials.js"></script>
 </head>
 
 <html>
 
 <body>
+
+  <h3>Firebase Authentication</h3>
+  
+  <div class="quickstart-user-details-container">
+    <button id="quickstart-button">Sign-in with Google</button>
+    <p>
+      Firebase sign-in status:
+      <span id="quickstart-sign-in-status">Unknown</span>
+      <div>Firebase auth
+        <code>currentUser</code> object value:</div>
+      <pre><code id="quickstart-account-details">null</code></pre>
+    </p>
+  </div>
 
   <div class="loadingoverlay">
   </div>
