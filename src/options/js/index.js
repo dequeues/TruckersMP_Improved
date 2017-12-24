@@ -122,7 +122,7 @@ function inject_init() {
   }
 
   function restore_options() {
-    $('#ext_name').html('<i class="fa fa-truck" aria-hidden="true"></i> <strong>' + chrome.runtime.getManifest().name + '</strong> ' + chrome.runtime.getManifest().version);
+    $('#ext_name').html('<i class="fa fa-truck" aria-hidden="true"></i> <strong>TMP Improved</strong> ' + chrome.runtime.getManifest().version);
 
     function set_options(items) {
       try {
@@ -406,6 +406,11 @@ function inject_init() {
     createField(section);
   });
 
+  $('button#loadData').on('click', function (event) {
+    if (confirm('Do you really want to rewrite your settings with Online data?')) {
+      loadSettingsFromFirebase()
+    }
+  })
 
   restore_options();
 }

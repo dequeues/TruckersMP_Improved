@@ -1,6 +1,7 @@
 var settings, storage, steamapi, OwnReasons, OwnDates, last_version, date_buttons;
 var version = chrome.runtime.getManifest().version;
 var syncAllowed = false;
+var database = firebase.database();
 
 if (chrome.storage.sync) {
   syncAllowed = true;
@@ -187,6 +188,14 @@ function loadSettings(callBack) {
   }
 }
 
+function loadSettingsFromFirebase() {
+  if (!isSignedIn) {
+    save_options()
+  }
+
+  console.log('lol')
+}
+ 
 function saveSettings(storage, data, with_message) {
   data.OwnReasons = parseItems(data.OwnReasons);
   console.log(data);
@@ -199,16 +208,14 @@ function saveSettings(storage, data, with_message) {
       }
     }
   });
-
-  var database = firebase.database();
-
-  console.log();
-  database.ref('data/' + firebase.auth().currentUser.uid).set(JSON.stringify(data));
-
-
-  firebase.database().ref('data/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
-    console.log(snapshot.val())
-  })
+  
+  if (isSignedIn) {
+    database.ref('data/' + firebase.auth().currentUser.uid).set(JSON.stringify(data));
+    
+    firebase.database().ref('data/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
+      console.log(snapshot.val())
+    })
+  }
 }
 
 function val_init() {

@@ -1,26 +1,4 @@
-// TODO(DEVELOPER): Change the values below using values from the initialization snippet: Firebase Console > Overview > Add Firebase to your web app.
 // Initialize Firebase
-var config = {
-  apiKey: 'AIzaSyBRIZkTmfSTE_vTCQtNtN0X1Xqd0o94X8o',
-  databaseURL: 'https://truckersmp-improved.firebaseio.com',
-  storageBucket: 'truckersmp-improved.appspot.com'
-};
-firebase.initializeApp(config);
-
-/**
- * initApp handles setting up the Firebase context and registering
- * callbacks for the auth status.
- *
- * The core initialization is in firebase.App - this is the glue class
- * which stores configuration. We provide an app name here to allow
- * distinguishing multiple app instances.
- *
- * This method also registers a listener with firebase.auth().onAuthStateChanged.
- * This listener is called when the user is signed in or out, and that
- * is where we update the UI.
- *
- * When signed in, we also authenticate to the Firebase Realtime Database.
- */
 function initApp() {
   // Listen for auth state changes.
   // [START authstatelistener]
@@ -34,25 +12,26 @@ function initApp() {
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
-      // [START_EXCLUDE]
-      document.getElementById('quickstart-button').textContent = 'Sign out';
-      document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-      document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+
+      $('#quickstart-button').text('Sign out');
+      $('#quickstart-sign-in-status').text('Signed in');
+      
+      $('#quickstart-account-details').text(JSON.stringify(user, null, '  '));
       // [END_EXCLUDE]
     } else {
       // Let's try to get a Google auth token programmatically.
       // [START_EXCLUDE]
-      document.getElementById('quickstart-button').textContent = 'Sign-in with Google';
-      document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-      document.getElementById('quickstart-account-details').textContent = 'null';
+      $('#quickstart-button').text('Sign-in with Google');
+      $('#quickstart-sign-in-status').text('Signed out');
+      $('#quickstart-account-details').html('There is no data to show... But there is a cake! <img src="https://i.imgur.com/i4YAIoU.png" class="img-rounded">');
       // [END_EXCLUDE]
     }
-    document.getElementById('quickstart-button').disabled = false;
   });
   // [END authstatelistener]
 
-  document.getElementById('quickstart-button').addEventListener('click', startSignIn, false);
+  $('#quickstart-button').on('click', startSignIn);
 }
+
 
 /**
  * Start the auth flow and authorizes to Firebase.

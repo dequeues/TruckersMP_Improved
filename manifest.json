@@ -28,21 +28,10 @@
     "unlimitedStorage",
     "webRequest",
     "clipboardRead",
-    "clipboardWrite",
-    "identity"
+    "clipboardWrite"
   ],
 
-  "oauth2": {
-    "client_id": "138724875326-8jmtof09gronu9kot5dnj87iut7167r2.apps.googleusercontent.com",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.email",
-      "https://www.googleapis.com/auth/userinfo.profile"
-    ]
-  },
-  
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlv/D5OwOI+h3nO2soMTyn8hgcoCMUIxWsmNe1DVK86MBzvfv0b/WlKWzjIu8dsyRNK25wjBCch6sebZj1IumlpDSg91Ml74u8gyXN2emzw93iJxogxcxHx5KE6TR5T0PCXAHh65XXR334zLVdGxpkHRn8uu65Z8XSE8pxyW3DJY5dQwFw1pwUCyBRe9LAuCpy+KSFcEnSeSaBoGDY/B4MGP3fi3tFiVQ9hjk1UMTbkRBMUfbN5XE+xePigoKyTBYbpw3rFAzMLJggpfxfabAsL8uNsIFbgiVwOF6U7I76W5l99e5t72ozMHX59ilCbb5iaIc6uSbxQH+1afu2m040QIDAQAB",
-
-  "content_security_policy": "script-src 'self' https://bigmp.ru https://www.gstatic.com https://*.firebaseio.com https://*.googleapis.com https://*.cloudflare.com; object-src 'self'; style-src 'self' https://cdnjs.cloudflare.com",
+   "content_security_policy": "script-src 'self' https://www.gstatic.com https://*.firebaseio.com https://*.firebase.com https://apis.google.com https://www.googleapis.com https://cdnjs.cloudflare.com; object-src 'self'; style-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.googleapis.com https://cdnjs.cloudflare.com https://*.firebase.com",
 
   "background": {
     "page": "src/bg/background.html"
